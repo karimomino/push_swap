@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:27 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/09 06:21:17 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/15 22:38:57 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 ** 	NAME		TYPE		DESCRIPTION
 ** 	TBD			TBD			TBD
 */
-void	rotate_stack()
+void	rotate_stack(void)
 {
-	
 }
 
 /*
@@ -31,9 +30,8 @@ void	rotate_stack()
 ** 	NAME		TYPE		DESCRIPTION
 ** 	TBD			TBD			TBD
 */
-void	rotate_both()
+void	rotate_both(void)
 {
-	
 }
 
 /*
@@ -43,9 +41,8 @@ void	rotate_both()
 ** 	NAME		TYPE		DESCRIPTION
 ** 	TBD			TBD			TBD
 */
-void	rev_rotate_stack()
+void	rev_rotate_stack(void)
 {
-	
 }
 
 /*
@@ -55,7 +52,6 @@ void	rev_rotate_stack()
 ** 	NAME		TYPE		DESCRIPTION
 ** 	TBD			TBD			TBD
 */
-void	rev_rotate_both()
+void	rev_rotate_both(void)
 {
-	
 }

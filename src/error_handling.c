@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:29:14 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/15 00:25:30 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/15 22:41:45 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	check_itwo(int ac, char **av)
 {
 	int		i;
 	int		valid;
+
 	i = 0;
 	valid = 1;
 	while (av[++i] && valid)

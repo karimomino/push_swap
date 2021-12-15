@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 05:58:24 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/15 02:21:49 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/15 22:40:35 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int	main(int argc, char *argv[])
 {
 	int	errors;
-	
+
 	errors = check_input(argc, argv);
 	if (argc > 1 && errors > 0)
 		printf("The Input Is Valid\n");

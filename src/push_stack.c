@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:20 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/09 06:23:45 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/15 22:40:04 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 ** 	NAME		TYPE		DESCRIPTION
 ** 	TBD			TBD			TBD
 */
-void	push_stack()
+void	push_stack(void)
 {
-
 }
