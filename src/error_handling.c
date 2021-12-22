@@ -6,19 +6,19 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:29:14 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/15 22:41:45 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/22 03:36:25 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/*
-** This function will validate the input of the user to the program
-** Params:
-** 	NAME		TYPE		DESCRIPTION
-** 	av			*String		The input from user to be validated.
-** 	ac			Int			Number of params passed by the user to the program
-*/
+/**
+ * @brief This function will validate the input of the user to the program
+ * 
+ * @param ac Number of params passed by the user to the program
+ * @param av The input from user to be validated.
+ * @return int - Error Code or 1 if valid
+ */
 int	check_input(int ac, char **av)
 {
 	int	valid;
@@ -31,6 +31,13 @@ int	check_input(int ac, char **av)
 	return (valid);
 }
 
+/**
+ * @brief This Function Check The Input Of The User In The Case It Was
+ * Entered As 1 String (1 argument to the program)
+ * 
+ * @param av The Argument Sent To The Program
+ * @return int - Error Code or 1 if valid
+ */
 int	check_ione(char *av)
 {
 	char	**tmp;
@@ -50,6 +57,14 @@ int	check_ione(char *av)
 	return (valid);
 }
 
+/**
+ * @brief This Function Check The Input Of The User In The Case It Was
+ * Entered As Many Strings (2+ argument to the program)
+ * 
+ * @param ac The Number Of Arguments Sent To The Program
+ * @param av The Arguments Sent To The Program
+ * @return int - Error Code or 1 if valid 
+ */
 int	check_itwo(int ac, char **av)
 {
 	int		i;
@@ -64,6 +79,11 @@ int	check_itwo(int ac, char **av)
 	return (valid);
 }
 
+/**
+ * @brief This Funciton Prints The Error Message To THe User If Any
+ * 
+ * @param error_code The Code/Number Of The Error The Occured
+ */
 void	print_errors(int error_code)
 {
 	printf("Error: %d", error_code);
