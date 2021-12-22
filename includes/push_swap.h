@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:14 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/22 04:22:23 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/22 04:28:59 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	rev_rotate_both(char ***stack, char ***stack2);
 void	push_stack(char ***stack, char ***stack2);
 
 /*Swapping The Stacks*/
+void	swap_stack(char ***stack);
+void	swap_both(char ***stack, char ***stack2);
 
 /*UTILITIES*/
 int		count_elems(char **stack);
