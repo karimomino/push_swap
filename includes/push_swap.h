@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:14 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/22 03:51:57 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/22 04:22:23 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ void	print_errors(int error_code);
 int		partition(int **arr, int low, int high);
 void	quicksort(int **arr, int low, int high);
 void	swap(int *a, int *b);
+
+/*Rotating The Stacks*/
+void	rotate_stack(char ***stack);
+void	rotate_both(char ***stack, char ***stack2);
+void	rev_rotate_stack(char ***stack);
+void	rev_rotate_both(char ***stack, char ***stack2);
+
+/*Pushing The Stacks*/
+void	push_stack(char ***stack, char ***stack2);
+
+/*Swapping The Stacks*/
 
 /*UTILITIES*/
 int		count_elems(char **stack);
