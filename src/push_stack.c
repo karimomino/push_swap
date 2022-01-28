@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:20 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/22 04:22:47 by kamin            ###   ########.fr       */
+/*   Updated: 2022/01/08 08:03:48 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@
  * @param stack Stack To Take The Top Element From To Put On Top Of B
  * @param stack2 Stack That The Top Element Of A Will Go On Top Of
  */
-void	push_stack(char ***stack, char ***stack2)
+void	push_stack(int **stack, int **stack2)
 {
 	int	elems;
 	int	elems2;
+	int	*tmp;
 
 	elems = count_elems(*stack);
 	elems2 = count_elems(*stack2);
-	(*stack2)[elems2] = (*stack)[elems - 1];
-	(*stack)[elems - 1] = 0;
+	(*stack2)[elems2] = (*stack)[elems + 1];
+	tmp = (*stack) + elems;
+	tmp = NULL;
 }

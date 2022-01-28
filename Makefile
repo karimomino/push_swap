@@ -6,7 +6,7 @@
 #    By: kamin <kamin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 05:43:04 by kamin             #+#    #+#              #
-#    Updated: 2021/12/14 17:28:30 by kamin            ###   ########.fr        #
+#    Updated: 2022/01/08 08:07:17 by kamin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ DIR_S		=	src/
 SRC		=	main.c \
 			push_swap.c \
 			error_handling.c \
-			utils.c
+			utils.c \
+			push_stack.c \
+			rotate_stack.c \
+			swap_stack.c \
+			quicksort.c \
 
 OBJS	=	$(addorefix $(DIR_S),$(SRC:.c=.o))
 

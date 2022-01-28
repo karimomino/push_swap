@@ -6,11 +6,19 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 05:43:33 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/22 03:26:07 by kamin            ###   ########.fr       */
+/*   Updated: 2021/12/26 17:00:57 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+struct s_stacks
+{
+	int	*a;
+	int	*b;
+	int	*s;
+	int	mp;
+}		t_stack;
 
 #endif

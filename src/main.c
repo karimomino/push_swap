@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 05:58:24 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/15 22:40:35 by kamin            ###   ########.fr       */
+/*   Updated: 2022/01/06 19:47:32 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 */
 int	main(int argc, char *argv[])
 {
-	int	errors;
+	int		errors;
+	int		elems;
+	char	**numbers;
 
 	errors = check_input(argc, argv);
 	if (argc > 1 && errors > 0)
-		printf("The Input Is Valid\n");
+	{
+		elems = ft_split_wc(argv[1], ' ', &numbers);
+		push_swap(&numbers, elems);
+	}
 	else
 		print_errors(errors);
 	return (0);
