@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:28:45 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/03 21:26:53 by kamin            ###   ########.fr       */
+/*   Updated: 2022/01/28 23:51:24 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	count_elems(int *stack)
 	i = 0;
 	if (!(*stack))
 		return (0);
-	while (stack + 1 != NULL)
+	while (stack != NULL)
 		counter++;
 	return (counter);
 }
@@ -44,7 +44,7 @@ int	*split_atoi(char **list, int elems)
 	int	*list_i;
 	int	i;
 
-	list_i = (int *)malloc(elems * sizeof(int));
+	list_i = (int *)malloc((elems + 1) * sizeof(int));
 	i = 0;
 	while (i < elems)
 	{

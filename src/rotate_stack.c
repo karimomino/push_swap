@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:27 by kamin             #+#    #+#             */
-/*   Updated: 2021/12/26 17:44:29 by kamin            ###   ########.fr       */
+/*   Updated: 2022/01/29 00:43:15 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
  * 
  * @param stack - The Stack To Be Rolled Up.
  */
-void	rotate_stack(int **stack)
+void	rotate_stack(t_bp stack)
 {
 	int	tmp;
 	int	elems;
 	int	i;
 
-	elems = count_elems(*stack);
+	elems = stack.elems;
 	i = 0;
-	if (*stack[i] && elems > 1)
+	if (stack.stack[i] && elems > 1)
 	{
-		tmp = (*stack)[elems - 1];
+		tmp = (stack.stack)[elems - 1];
 		while (i < elems - 2)
 		{
-			(*stack)[i + 1] = (*stack)[i];
+			(stack.stack)[i + 1] = (stack.stack)[i];
 			i++;
 		}
-		(*stack)[0] = tmp;
+		(stack.stack)[0] = tmp;
 	}
 }
 
@@ -45,7 +45,7 @@ void	rotate_stack(int **stack)
  * @param stack Stack A To Be Rolled Up
  * @param stack2 Stack B To Be Rolled Up
  */
-void	rotate_both(int **stack, int **stack2)
+void	rotate_both(t_bp stack, t_bp stack2)
 {
 	rotate_stack(stack);
 	rotate_stack(stack2);
@@ -57,23 +57,23 @@ void	rotate_both(int **stack, int **stack2)
  * 
  * @param stack The Stack To Be Rolled Down
  */
-void	rev_rotate_stack(int **stack)
+void	rev_rotate_stack(t_bp stack)
 {
 	int	tmp;
 	int	elems;
 	int	i;
 
-	elems = count_elems(*stack);
+	elems = stack.elems;
 	i = 0;
-	if (*stack[i] && elems > 1)
+	if (stack.stack[i] && elems > 1)
 	{
-		tmp = (*stack)[i];
+		tmp = (stack.stack)[i];
 		while (i < elems - 2)
 		{
-			(*stack)[i] = (*stack)[i + 1];
+			(stack.stack)[i] = (stack.stack)[i + 1];
 			i++;
 		}
-		(*stack)[elems - 1] = tmp;
+		(stack.stack)[elems - 1] = tmp;
 	}
 }
 
@@ -84,7 +84,7 @@ void	rev_rotate_stack(int **stack)
  * @param stack Stack A To Be Rolled Down
  * @param stack2 Stack B To Be Rolled Down
  */
-void	rev_rotate_both(int **stack, int **stack2)
+void	rev_rotate_both(t_bp stack, t_bp stack2)
 {
 	rev_rotate_stack(stack);
 	rev_rotate_stack(stack2);

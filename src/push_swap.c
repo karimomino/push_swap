@@ -6,19 +6,44 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:24 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/28 23:14:53 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/11 01:36:53 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	constructor(char ***stack, int size)
+{
+	struct s_node	*mp;
+	int	*nums;
+	int	*snums;
+	int	i;
+
+	i = 0;
+	nums = split_atoi(*stack, size);
+	snums = split_atoi(*stack, size);
+	quicksort(&snums, 0, size - 1);
+	t_stack.a.head = NULL;
+	t_stack.s.head = NULL;
+	while (i < size)
+		add_dll_back(&t_stack.a.head, nums[i++]);
+	i = 0;
+	while (i < size)
+		add_dll_back(&t_stack.s.head, snums[i++]);
+	i = 0;
+	while (i++ < size/2)
+	{
+		mp = t_stack.s.head;
+		t_stack.s.head = t_stack.s.head->next;
+	}
+	t_stack.mp = t_stack.s.head->data;
+	t_stack.b.head = NULL;
+}
+
 void	push_swap(char ***stack, int size)
 {
-	t_stack.a = split_atoi(*stack, size);
-	t_stack.s = t_stack.a;
-	quicksort(&t_stack.s, 0, size - 1);
-	t_stack.mp = t_stack.s[size / 2];
-	t_stack.b = (int *)malloc(size * sizeof(int));
+	constructor(stack, size);
+	// check_smaller(size);
 }
 
 void	check_smaller(int size)
@@ -27,19 +52,40 @@ void	check_smaller(int size)
 	int	counter;
 
 	i = -1;
-	counter = size / 2 + 2;
-	while (--counter && t_stack.a[++i] < t_stack.mp)
-		push_stack(&t_stack.a, &t_stack.b);
-	i = size;
-	while (--counter && t_stack.a[--i] < t_stack.mp)
+	counter = size / 2;
+	while (counter && t_stack.a.stack[++i] < t_stack.mp)
 	{
-		rev_rotate_stack(&t_stack.a);
-		push_stack(&t_stack.a, &t_stack.b);
+		do_op(0);
+		counter--;
 	}
-	i = 0;
-	while (counter && t_stack.a[i])
+	if (counter && t_stack.a.stack[--size] < t_stack.mp)
 	{
-		if (t_stack.a[i] >= t_stack.mp)
-			rotate_stack(&t_stack.a);
+		printf("true");
+		i = size;
+		while (counter)
+		{
+			printf("in");
+			if (t_stack.a.stack[--i] >= t_stack.mp)
+				do_op(5);
+			else
+			{
+				do_op(0);
+				counter--;
+			}
+		}
+	}
+	else
+	{
+		while (counter)
+		{
+			if (t_stack.a.stack[i] >= t_stack.mp)
+				do_op(2);
+			else
+			{
+				do_op(0);
+				i++;
+				counter--;
+			}
+		}
 	}
 }
