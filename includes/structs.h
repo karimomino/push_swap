@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 05:43:33 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/10 23:52:17 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/11 02:57:00 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_stack
 {
 	int				*stack;
 	struct s_node	*head;
+	struct s_node	*current;
 	int				elems;
 }		t_bp;
 

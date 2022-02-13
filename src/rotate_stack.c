@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:27 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/29 00:43:15 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 19:37:47 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,17 @@
  * 
  * @param stack - The Stack To Be Rolled Up.
  */
-void	rotate_stack(t_bp stack)
+void	rotate_stack(t_bp *stack)
 {
-	int	tmp;
-	int	elems;
-	int	i;
+	struct s_node	*tmp;
+	int	key;
 
-	elems = stack.elems;
-	i = 0;
-	if (stack.stack[i] && elems > 1)
-	{
-		tmp = (stack.stack)[elems - 1];
-		while (i < elems - 2)
-		{
-			(stack.stack)[i + 1] = (stack.stack)[i];
-			i++;
-		}
-		(stack.stack)[0] = tmp;
-	}
+	stack_last(stack);
+	tmp = (*stack).head;
+	key = (*stack).head->data;
+	reset_stack(stack);
+	deleteNode(&(*stack).head, key);
+	add_dll_front(&(*stack).head, key);
 }
 
 /**
@@ -45,7 +38,7 @@ void	rotate_stack(t_bp stack)
  * @param stack Stack A To Be Rolled Up
  * @param stack2 Stack B To Be Rolled Up
  */
-void	rotate_both(t_bp stack, t_bp stack2)
+void	rotate_both(t_bp *stack, t_bp *stack2)
 {
 	rotate_stack(stack);
 	rotate_stack(stack2);
@@ -57,24 +50,16 @@ void	rotate_both(t_bp stack, t_bp stack2)
  * 
  * @param stack The Stack To Be Rolled Down
  */
-void	rev_rotate_stack(t_bp stack)
+void	rev_rotate_stack(t_bp *stack)
 {
-	int	tmp;
-	int	elems;
-	int	i;
+	int	key;
 
-	elems = stack.elems;
-	i = 0;
-	if (stack.stack[i] && elems > 1)
-	{
-		tmp = (stack.stack)[i];
-		while (i < elems - 2)
-		{
-			(stack.stack)[i] = (stack.stack)[i + 1];
-			i++;
-		}
-		(stack.stack)[elems - 1] = tmp;
-	}
+	while ((*stack).head->next != NULL)
+		(*stack).head = (*stack).head->next;
+	key = (*stack).head->data;
+	reset_stack(stack);
+	deleteNode(&(*stack).head, key);
+	add_dll_front(&(*stack).head, key);
 }
 
 /**
@@ -84,7 +69,7 @@ void	rev_rotate_stack(t_bp stack)
  * @param stack Stack A To Be Rolled Down
  * @param stack2 Stack B To Be Rolled Down
  */
-void	rev_rotate_both(t_bp stack, t_bp stack2)
+void	rev_rotate_both(t_bp *stack, t_bp *stack2)
 {
 	rev_rotate_stack(stack);
 	rev_rotate_stack(stack2);

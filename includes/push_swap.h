@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:14 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/11 00:01:11 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 19:24:53 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	swap(int *a, int *b);
 void	quicksort(int **arr, int low, int high);
 
 /*Rotating The Stacks*/
-void	rotate_stack(t_bp stack);
-void	rev_rotate_stack(t_bp stack);
-void	rotate_both(t_bp stack, t_bp stack2);
-void	rev_rotate_both(t_bp stack, t_bp stack2);
+void	rotate_stack(t_bp *stack);
+void	rev_rotate_stack(t_bp *stack);
+void	rotate_both(t_bp *stack, t_bp *stack2);
+void	rev_rotate_both(t_bp *stack, t_bp *stack2);
 
 /*Pushing The Stacks*/
-void	push_stack(int **stack, int **stack2);
+void	push_stack(t_bp *stack, t_bp *stack2);
 
 /*Swapping The Stacks*/
 void	swap_stack(int **stack);
@@ -55,7 +55,11 @@ void	do_op_2(int op);
 void	do_op_3(int op);
 
 /*DOUBLLY LINKED LIST OPERATIONS*/
-void	add_dll_back(struct s_node** head_ref, int new_data);
-void printList(struct s_node* node);
+void	add_dll_back(struct s_node** head, int new_data);
+void	add_dll_front(struct s_node** head, int new_data);
+void	deleteNode(struct s_node** head, int key);
+void	printList(struct s_node* node);
+void	reset_stack(t_bp *stack);
+void	stack_last(t_bp *stack);
 
 #endif

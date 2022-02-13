@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:20 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/29 00:11:04 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 19:25:17 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,16 @@
  * @param stack Stack To Take The Top Element From To Put On Top Of B
  * @param stack2 Stack That The Top Element Of A Will Go On Top Of
  */
-void	push_stack(int **stack, int **stack2)
+void	push_stack(t_bp *stack, t_bp *stack2)
 {
-	int	elems;
-	int	elems2;
-	int	*tmp;
+	int	tmp;
 
-	elems = t_stack.a.elems;
-	elems2 = t_stack.b.elems;
-	(*stack2)[elems2] = (*stack)[elems + 1];
-	tmp = (*stack) + elems;
-	tmp = NULL;
+	if ((*stack).head != NULL)
+	{
+		stack_last(stack);
+		tmp = (*stack).head->data;
+		reset_stack(stack);
+		deleteNode(&(*stack).head, tmp);
+		add_dll_back(&(*stack2).head, tmp);
+	}
 }

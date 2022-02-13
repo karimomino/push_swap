@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 23:12:14 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/29 00:45:32 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 17:32:37 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ void	do_op(int op)
 {
 	if (op == 0)
 	{
-		push_stack(&t_stack.a.stack, &t_stack.b.stack);
+		push_stack(&t_stack.a, &t_stack.b);
 		t_stack.a.elems--;
 		t_stack.b.elems++;
 		write(1, "pb\n", 3);
 	}
 	else if (op == 1)
 	{
-		push_stack(&t_stack.b.stack, &t_stack.a.stack);
+		push_stack(&t_stack.b, &t_stack.a);
 		t_stack.b.elems--;
 		t_stack.a.elems++;
 		write(1, "pa\n", 3);
 	}
 	else if (op == 2)
 	{
-		rotate_stack(t_stack.a);
+		rotate_stack(&t_stack.a);
 		write(1, "ra\n", 3);
 	}
 	else if (op == 3)
 	{
-		rotate_stack(t_stack.b);
+		rotate_stack(&t_stack.b);
 		write(1, "rb\n", 3);
 	}
 	else if (op > 3)
@@ -46,22 +46,22 @@ void	do_op_2(int op)
 {
 	if (op == 4)
 	{
-		rotate_both(t_stack.a, t_stack.b);
+		rotate_both(&t_stack.a, &t_stack.b);
 		write(1, "rr\n", 3);
 	}
 	else if (op == 5)
 	{
-		rev_rotate_stack(t_stack.a);
+		rev_rotate_stack(&t_stack.a);
 		write(1, "rra\n", 4);
 	}
 	else if (op == 6)
 	{
-		rev_rotate_stack(t_stack.b);
+		rev_rotate_stack(&t_stack.b);
 		write(1, "rrb\n", 4);
 	}
 	else if (op == 7)
 	{
-		rev_rotate_both(t_stack.a, t_stack.b);
+		rev_rotate_both(&t_stack.a, &t_stack.b);
 		write(1, "rrr\n", 4);
 	}
 	else if (op > 7)

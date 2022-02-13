@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:25:25 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/11 00:06:01 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 19:24:13 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 /* Given a reference (pointer to pointer) to the head of a
 list and an int, inserts a new node on the front of the
 list. */
-void push(struct s_node** head_ref, int new_data)
+void	add_dll_front(struct s_node** head, int new_data)
 {
 	struct s_node*	new_node;
 
 	new_node = (struct s_node*)malloc(sizeof(struct s_node));
 	new_node->data = new_data;
-	new_node->next = (*head_ref);
+	new_node->next = (*head);
 	new_node->prev = NULL;
-	if ((*head_ref) != NULL)
-		(*head_ref)->prev = new_node;
-	(*head_ref) = new_node;
+	if ((*head) != NULL)
+		(*head)->prev = new_node;
+	(*head) = new_node;
 }
 
 /* Given a node as prev_node, insert a new node after the
@@ -47,17 +47,17 @@ void insertAfter(struct s_node* prev_node, int new_data)
 
 /* Given a reference (pointer to pointer) to the head
 of a DLL and an int, appends a new node at the end */
-void add_dll_back(struct s_node** head_ref, int new_data)
+void add_dll_back(struct s_node** head, int new_data)
 {
 	struct s_node* new_node;
 
 	new_node = (struct s_node*)malloc(sizeof(struct s_node));
-	struct s_node* last = *head_ref;
+	struct s_node* last = *head;
 	new_node->data = new_data;
 	new_node->next = NULL;
-	if (*head_ref == NULL) {
+	if (*head == NULL) {
 		new_node->prev = NULL;
-		*head_ref = new_node;
+		*head = new_node;
 		return;
 	}
 	while (last->next != NULL)
@@ -68,17 +68,54 @@ void add_dll_back(struct s_node** head_ref, int new_data)
 	return;
 }
 
+void	deleteNode(struct s_node** head, int key)
+{
+	// Store head node
+	struct s_node *tmp;
+	struct s_node *prev;
+	
+	 tmp = *head;
+	// If head node itself holds the key to be deleted
+	if (tmp != NULL && tmp->data == key) {
+		*head = tmp->next; // Changed head
+		free(tmp); // free old head
+	}
+	else
+	{
+		while (tmp != NULL && tmp->data != key) {
+			prev = tmp;
+			tmp = tmp->next;
+		}
+		if (tmp != NULL)
+		{
+			prev->next = tmp->next;
+			free(tmp);
+		}
+	}
+}
+
 // This function prints contents of linked list starting
 // from the given node
 void printList(struct s_node* node)
 {
 	struct s_node* last;
-	printf("\nTraversal in forward direction \n");
 	while (node != NULL) {
-		printf("%d", node->data);
+		printf("%d ", node->data);
 		last = node;
 		node = node->next;
 	}
+}
+
+void reset_stack(t_bp *stack)
+{
+	while ((*stack).head->prev != NULL)
+		(*stack).head = (*stack).head->prev;
+}
+
+void stack_last(t_bp *stack)
+{
+	while ((*stack).head->next != NULL)
+		(*stack).head = (*stack).head->next;
 }
 
 // /* Driver program to test above functions*/
