@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:20 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/13 19:25:17 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/04 02:08:26 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	push_stack(t_bp *stack, t_bp *stack2)
 		reset_stack(stack);
 		deleteNode(&(*stack).head, tmp);
 		add_dll_back(&(*stack2).head, tmp);
+		(*stack).elems--;
+		(*stack2).elems++;
 	}
 }

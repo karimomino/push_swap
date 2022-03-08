@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:32 by kamin             #+#    #+#             */
-/*   Updated: 2022/01/08 08:06:54 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/08 20:40:56 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
  * 
  * @param stack The Stack To Swap The Topmost Two Elements
  */
-void	swap_stack(int **stack)
+void	swap_stack(t_bp *stack)
 {
-	int	elems;
 	int	tmp;
 
-	elems = count_elems(*stack);
-	tmp = *stack[elems - 2];
-	*stack[elems - 2] = *stack[elems - 1];
-	*stack[elems - 1] = tmp;
+	stack_last(stack);
+	tmp = (*stack).head->data;
+	(*stack).head->data = (*stack).head->prev->data;
+	(*stack).head->prev->data = tmp;
+	reset_stack(stack);
 }
 
 /**
@@ -34,7 +34,7 @@ void	swap_stack(int **stack)
  * @param stack First Stack To Swap The Topmost Two Elements
  * @param stack2 Second Stack To Swap The Topmost Two Elements
  */
-void	swap_both(int **stack, int **stack2)
+void	swap_both(t_bp *stack, t_bp *stack2)
 {
 	swap_stack(stack);
 	swap_stack(stack2);

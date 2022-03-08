@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 23:12:14 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/13 17:32:37 by kamin            ###   ########.fr       */
+/*   Updated: 2022/02/13 20:32:09 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ void	do_op(int op)
 	if (op == 0)
 	{
 		push_stack(&t_stack.a, &t_stack.b);
-		t_stack.a.elems--;
-		t_stack.b.elems++;
 		write(1, "pb\n", 3);
 	}
 	else if (op == 1)
 	{
 		push_stack(&t_stack.b, &t_stack.a);
-		t_stack.b.elems--;
-		t_stack.a.elems++;
 		write(1, "pa\n", 3);
 	}
 	else if (op == 2)
@@ -72,17 +68,17 @@ void	do_op_3(int op)
 {
 	if (op == 8)
 	{
-		swap_stack(&t_stack.a.stack);
+		swap_stack(&t_stack.a);
 		write(1, "sa\n", 3);
 	}
 	else if (op == 9)
 	{
-		swap_stack(&t_stack.b.stack);
+		swap_stack(&t_stack.b);
 		write(1, "sb\n", 3);
 	}
 	else if (op == 10)
 	{
-		swap_both(&t_stack.a.stack, &t_stack.b.stack);
+		swap_both(&t_stack.a, &t_stack.b);
 		write(1, "ss\n", 3);
 	}
 }

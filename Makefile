@@ -6,7 +6,7 @@
 #    By: kamin <kamin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 05:43:04 by kamin             #+#    #+#              #
-#    Updated: 2022/02/10 23:59:40 by kamin            ###   ########.fr        #
+#    Updated: 2022/03/08 20:29:51 by kamin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC		=	main.c \
 			quicksort.c \
 			do_op.c \
 			list_management.c \
+			checks.c \
 
 OBJS	=	$(addorefix $(DIR_S),$(SRC:.c=.o))
 

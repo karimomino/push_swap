@@ -6,12 +6,32 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 05:58:24 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/11 01:26:01 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/08 20:39:25 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-//#include "../libft/libft.h"
+// #include "do_op.c"
+// #include "error_handling.c"
+// #include "list_management.c"
+// #include "push_stack.c"
+// #include "push_swap.c"
+// #include "quicksort.c"
+// #include "rotate_stack.c"
+// #include "swap_stack.c"
+// #include "utils.c"
+// #include "../libft/libft.h"
+// #include "../libft/ft_checkdup.c"
+// #include "../libft/ft_split_wc.c"
+// #include "../libft/ft_isnum.c"
+// #include "../libft/ft_atoi.c"
+// #include "../libft/ft_isdigit.c"
+// #include "../libft/ft_isint.c"
+// #include "../libft/ft_strcmp.c"
+// #include "../libft/ft_strlcpy.c"
+// #include "../libft/ft_strlen.c"
+
+
 
 /*
 ** This is the main function. It makes all the necessary

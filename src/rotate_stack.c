@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:27 by kamin             #+#    #+#             */
-/*   Updated: 2022/02/13 19:37:47 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/03 23:29:45 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ void	rev_rotate_stack(t_bp *stack)
 {
 	int	key;
 
-	while ((*stack).head->next != NULL)
-		(*stack).head = (*stack).head->next;
-	key = (*stack).head->data;
 	reset_stack(stack);
+	key = (*stack).head->data;
 	deleteNode(&(*stack).head, key);
-	add_dll_front(&(*stack).head, key);
+	add_dll_back(&(*stack).head, key);
 }
 
 /**

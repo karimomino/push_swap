@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 05:43:33 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/08 20:46:35 by kamin            ###   ########.fr       */
+/*   Created: 2022/03/08 20:06:48 by kamin             #+#    #+#             */
+/*   Updated: 2022/03/08 20:38:34 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../includes/push_swap.h"
 
-
-typedef struct s_stack
+int	is_sorted(t_bp *stack)
 {
-	struct s_node	*head;
-	int				elems;
-}		t_bp;
+	int	sorted;
 
-struct s_node {
-	int data;
-	struct s_node* next;
-	struct s_node* prev;
-}		t_node;
-
-struct s_stacks
-{
-	t_bp	a;
-	t_bp	b;
-	t_bp	s;
-	int		mp;
-	int		*chunks;
-}		t_stack;
-#endif
+	sorted = 1;
+	reset_stack(stack);
+	while (stack->head->next != NULL && sorted == 1)
+	{
+		if (stack->head->data < stack->head->next->data)
+			sorted = 0;
+		stack->head = stack->head->next;
+	}
+	reset_stack(stack);
+	return (sorted);
+}
