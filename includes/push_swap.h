@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:14 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/08 21:10:51 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/12 00:17:39 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void	swap_both(t_bp *stack, t_bp *stack2);
 
 /*MAIN PUSHSWAP ALGO*/
 void	push_swap(char ***stack, int size);
-void	check_smaller(int size, int *chunk_size);
+void	check_smaller(int size);
+void	solve_b(int	chunk_size);
 
 /*UTILITIES*/
 int		count_elems(int *stack);
 int		*split_atoi(char **list, int elems);
 void	refactor(t_bp *stack);
+void	refactor_b(t_bp *stack, int *chunk_size);
 
 /*DO OPERATION*/
 void	do_op(int op);

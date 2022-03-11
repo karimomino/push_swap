@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:25:25 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/04 01:03:09 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/12 02:26:21 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	deleteNode(struct s_node** head, int key)
 	if (tmp != NULL && tmp->data == key) {
 		*head = tmp->next; // Changed head
 		free(tmp); // free old head
-		(*head)->prev = NULL;
+		if ((*head))
+			(*head)->prev = NULL;
 	}
 	else
 	{
@@ -85,12 +86,18 @@ void	printList(struct s_node* node)
 
 void	reset_stack(t_bp *stack)
 {
-	while ((*stack).head->prev != NULL)
-		(*stack).head = (*stack).head->prev;
+	if ((*stack).head)
+	{
+		while ((*stack).head->prev != NULL)
+			(*stack).head = (*stack).head->prev;
+	}
 }
 
 void	stack_last(t_bp *stack)
 {
-	while ((*stack).head->next != NULL)
-		(*stack).head = (*stack).head->next;
+	if ((*stack).head)
+	{
+		while ((*stack).head->next != NULL)
+			(*stack).head = (*stack).head->next;
+	}
 }

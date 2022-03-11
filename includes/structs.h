@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 05:43:33 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/08 20:46:35 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/12 01:11:45 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ struct s_stacks
 	t_bp	s;
 	int		mp;
 	int		*chunks;
+	int		chunks_s;
 }		t_stack;
 #endif
