@@ -6,7 +6,7 @@
 /*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:24 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/12 02:42:53 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/13 00:21:18 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ void	constructor(char ***stack, int size)
 	int				*snums;
 	int				i;
 	int				chunks;
+	int				move;
 
 	i = 0;
+	move = 0;
 	chunks = size;
 	nums = split_atoi(*stack, size);
 	snums = split_atoi(*stack, size);
@@ -36,7 +38,11 @@ void	constructor(char ***stack, int size)
 	while (i < size)
 		add_dll_front(&t_stack.s.head, snums[i++]);
 	i = 0;
-	while (i++ < size/2 - 1)
+	if (size % 2)
+		move = size / 2;
+	else
+		move = size / 2 - 1;
+	while (i++ < move)
 		t_stack.s.head = t_stack.s.head->next;
 	stack_last(&t_stack.a);
 	t_stack.mp = t_stack.s.head->data;
@@ -85,6 +91,7 @@ void	push_swap(char ***stack, int size)
 		if (t_stack.s.elems == 2 && !is_sorted(&t_stack.a))
 			do_op(8);
 		i = 0;
+		reset_stack(&t_stack.b);
 		while (i < t_stack.chunks_s)
 		{
 			refactor_b(&t_stack.s, &t_stack.chunks[i]);
@@ -106,9 +113,21 @@ void	push_swap(char ***stack, int size)
 				// printf("im here 3\n");
 				do_op(1);
 			}
+			else if (t_stack.s.elems == 2)
+			{
+				do_op(1);
+				stack_last(&t_stack.b);
+				do_op(1);
+			}
 			reset_stack(&t_stack.b);
 			i++;
 		}
+			// printf("Stack A: ");
+			// printList(t_stack.a.head);
+			// printf("\n");
+			// printf("Stack B: ");
+			// printList(t_stack.b.head);
+			// printf("\n");
 	}
 	
 	// refactor_b(&t_stack.s,& t_stack.chunks[1]);
@@ -159,6 +178,8 @@ void	refactor_b(t_bp *stack, int *chunk_size)
 	int	*nums;
 	int	count;
 	int	i;
+	int	move;
+
 
 	count = ltoi(&t_stack.b, &nums);
 	if (count > *chunk_size)
@@ -177,9 +198,13 @@ void	refactor_b(t_bp *stack, int *chunk_size)
 	else
 		(*stack).elems = count;
 	i = 0;
-	while (i++ < *chunk_size / 2 - 1)
+	if (*chunk_size % 2)
+		move = *chunk_size / 2;
+	else
+		move = *chunk_size / 2 - 1;
+	while (i++ < move && *chunk_size > 1)
 		t_stack.s.head = t_stack.s.head->next;
-	if (count == 3)
+	if (count == 3 && *chunk_size > 1)
 		t_stack.s.head = t_stack.s.head->next;
 	t_stack.mp = (*stack).head->data;
 }
@@ -220,6 +245,7 @@ int	ltoi(t_bp *stack, int **nums)
 		(*stack).head = (*stack).head->next;
 		i++;
 	}
+	(*nums)[i] = (*stack).head->data;
 	if (count == 3)
 		(*nums)[i] = (*stack).head->data;
 	reset_stack(stack);
@@ -235,12 +261,6 @@ void	check_smaller(int size)
 	while (counter && t_stack.a.head->data < t_stack.mp)
 	{
 		do_op(0);
-		// printf("Stack A: ");
-		// printList(t_stack.a.head);
-		// printf("\n");
-		// printf("Stack B: ");
-		// printList(t_stack.b.head);
-		// printf("\n");
 		stack_last(&t_stack.a);
 		counter--;
 	}
@@ -312,6 +332,7 @@ void	solve_b(int	chunk_size)
 			if (t_stack.b.head->data <= t_stack.mp)
 			{
 				do_op(3);
+				// printf("MIDPOINT: %d\n", t_stack.mp);
 				// printf("Stack B AFTER RB: ");
 				// printList(t_stack.b.head);
 				rrb++;
