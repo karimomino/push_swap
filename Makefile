@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kamin <kamin@student.42.fr>                +#+  +:+       +#+         #
+#    By: kamin <kamin@42abudhabi.ae>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 05:43:04 by kamin             #+#    #+#              #
-#    Updated: 2022/03/08 20:29:51 by kamin            ###   ########.fr        #
+#    Updated: 2022/03/17 13:02:26 by kamin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	push_swap
 
 INCLUDES	=	includes
 
-DIR_S		=	src/
+DIR_S		=	./src/
 
 SRC		=	main.c \
 			push_swap.c \
@@ -40,7 +40,7 @@ $(NAME): $(OBJS)
 		@mv libft/libft.a libft.a
 		$(CC) $(FLAGS) $(addprefix $(DIR_S),$(SRC)) libft.a -I$(INCLUDES) -o $(NAME)
 
-all:$(NAME)
+all:	$(NAME)
 
 clean:
 		rm -f $(OBJS)
