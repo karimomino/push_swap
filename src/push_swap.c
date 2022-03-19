@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kamin <kamin@42abudhabi.ae>                +#+  +:+       +#+        */
+/*   By: kamin <kamin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 06:10:24 by kamin             #+#    #+#             */
-/*   Updated: 2022/03/17 17:03:18 by kamin            ###   ########.fr       */
+/*   Updated: 2022/03/17 21:14:00 by kamin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,26 @@ void	push_swap(char ***stack, int size)
 			refactor(&t_stack.s);
 			i++;
 			add_chunk(&t_stack.chunks, i);
+			t_stack.chunks[i] = 0;
 			// printf("after refactor\n");
 		}
 		if (t_stack.s.elems == 2 && !is_sorted(&t_stack.a))
 			do_op(8);
-		i--;
 		reset_stack(&t_stack.b);
-		while (i < t_stack.chunks_s)
+		// while (i < t_stack.chunks_s)
+		while (--i >= 0)
 		{
 			refactor_b(&t_stack.s, &t_stack.chunks[i]);
 			if (t_stack.s.elems == 1)
 				solve_b(t_stack.chunks[i]);
-			while (t_stack.s.elems > 2)
+			else
 			{
-				refactor_b(&t_stack.s, &t_stack.chunks[i]);
-				solve_b(t_stack.chunks[i]);
-				// printf("IM HERE\n");
+				while (t_stack.s.elems > 2)
+				{
+					refactor_b(&t_stack.s, &t_stack.chunks[i]);
+					solve_b(t_stack.chunks[i]);
+					// printf("IM HERE\n");
+				}
 			}
 			// printf("Im Here 2\n");
 			stack_last(&t_stack.b);
@@ -122,8 +126,8 @@ void	push_swap(char ***stack, int size)
 				do_op(1);
 			}
 			reset_stack(&t_stack.b);
-			i--;
 		}
+		refactor(&t_stack.s);
 			// printf("Stack A: ");
 			// printList(t_stack.a.head);
 			// printf("\n");
@@ -181,9 +185,11 @@ void	refactor_b(t_bp *stack, int *chunk_size)
 	int	count;
 	int	i;
 	int	move;
+	int	tmp;
 
 
 	count = ltoi(&t_stack.b, &nums);
+	tmp = *chunk_size;
 	if (count > *chunk_size)
 		i = count - *chunk_size;
 	else
@@ -209,6 +215,7 @@ void	refactor_b(t_bp *stack, int *chunk_size)
 	if (count == 3 && *chunk_size > 1)
 		t_stack.s.head = t_stack.s.head->next;
 	t_stack.mp = (*stack).head->data;
+	*chunk_size = tmp;
 }
 
 void	free_stack(t_bp *stack)
@@ -326,7 +333,10 @@ void	solve_b(int	chunk_size)
 	reset_stack(&t_stack.b);
 
 	if (chunk_size == 1)
+	{
 		do_op(1);
+		t_stack.s.elems--;
+	}
 	else
 	{
 
